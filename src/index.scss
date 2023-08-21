@@ -1,0 +1,5 @@
+@use "./components/styles/styles";
+
+body {
+  background-color: styles.$very-light-grey;
+}
