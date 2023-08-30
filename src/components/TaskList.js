@@ -3,43 +3,14 @@ import "./styles/TaskList.scss";
 
 const TaskList = (props) => {
   // const [updatedTaskList, setUpdatedTaskList] = useState([]);
+  // const [checkedTasks, setCheckedTasks] = useState([]);
 
   // Remove task when X is clicked
   const removeTaskHandler = (deletingTask) => {
     const updatedTaskList = props.tasks.filter((task) => task !== deletingTask);
     console.log(deletingTask);
     console.log(updatedTaskList);
-    props.onDeleteHandler(updatedTaskList);
-  };
-
-  const [checkedTasks, setCheckedTasks] = useState([]);
-
-  const verifyIfChecked = (clickedTask, checkedTask) => {
-    console.log(props.tasks);
-    console.log(clickedTask, checkedTask);
-    setCheckedTasks((currentTasksList) => {
-      return props.tasks.map((todo) => {
-        if (todo === clickedTask) {
-          return { ...todo, completed: checkedTask };
-        }
-
-        return todo;
-      });
-    });
-    console.log(checkedTasks);
-    // const checkedTasks = props.tasks.map((task) => {
-    //   if (task === clickedTask) {
-    //     return { ...task, checkedTask };
-    //   }
-    //   return task;
-    // });
-    // if (checkedTask) {
-    //   console.log("checked");
-    //   setCheckedTasks((prevTasks) => [...prevTasks, clickedTask]);
-    // } else {
-    //   console.log("not checked");
-    // }
-    // console.log(checkedTasks);
+    props.setTodoList(updatedTaskList);
   };
 
   return (
@@ -55,7 +26,7 @@ const TaskList = (props) => {
                     type="checkbox"
                     id={index}
                     name="item"
-                    onClick={(e) => verifyIfChecked(temptask, e.target.checked)}
+                    onClick={(e) => props.checkBoxHandler(e, index)}
                   />
                   <label htmlFor={index}>{temptask.task}</label>
                 </div>
@@ -77,9 +48,9 @@ const TaskList = (props) => {
       </div>
       <div>
         <div className="task_filter">
-          <div>All</div>
+          <div onClick={props.allTodosListHandler}>All</div>
           <div>Active</div>
-          <div>Completed</div>
+          <button onClick={props.completedListHandler}>Completed</button>
         </div>
       </div>
     </div>
