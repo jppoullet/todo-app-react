@@ -1,64 +1,73 @@
 import { useState } from "react";
 import "./App.scss";
-import CreateTask from "./components/CreateTask";
-import TaskList from "./components/TaskList";
+import CreateTodo from "./components/CreateTodo";
+import TodoList from "./components/TodoList";
 
 function App() {
-  const [tasksList, setTodoList] = useState([]);
+  const [todos, setTodos] = useState([]);
+  const [allTodos, setAllTodos] = useState([]);
 
-  const createTaskHandler = (newTask) => {
+  const createTodoHandler = (newTask) => {
     // console.log(`${newTask} submitted on APP component`);
-    setTodoList((prevTasksList) => {
-      return [...prevTasksList, { task: newTask, completed: false }];
+    setTodos((prevTodos) => {
+      return [...prevTodos, { task: newTask, completed: false }];
     });
+    setAllTodos(todos);
   };
 
-  const [copyTaskList, setCopyTaskList] = useState(tasksList);
   const checkBoxHandler = (event, index) => {
     const isChecked = event.target.checked;
 
-    const copyTaskListConst = tasksList;
-    setCopyTaskList(copyTaskListConst);
+    const checkedTodos = todos;
+    console.log(checkedTodos);
 
-    // const copyTaskList = tasksList;
-    // copyTaskList[index].completed = isChecked ? true : false;
     if (isChecked) {
-      copyTaskListConst[index].completed = true;
+      checkedTodos[index].completed = true;
     } else if (!isChecked) {
-      copyTaskListConst[index].completed = false;
+      checkedTodos[index].completed = false;
     }
 
-    // return setTodoList(copyTaskList);
+    setAllTodos(checkedTodos);
   };
 
-  const allTodosListHandler = () => {
-    setTodoList(copyTaskList);
+  const allTodosHandler = () => {
+    setTodos(allTodos);
+    console.log(allTodos);
   };
 
-  const completedListHandler = () => {
-    console.log(tasksList);
-    const checkedTodoItems = tasksList.filter((todo) => {
+  const activeListHandler = () => {
+    const activeTodos = allTodos.filter((todo) => {
+      if (todo.completed === false) {
+        return todo;
+      }
+    });
+    console.log(activeTodos);
+    setTodos(activeTodos);
+  };
+
+  const completedListHandler = (index) => {
+    const completedTodos = allTodos.filter((todo) => {
       if (todo.completed === true) {
         console.log(todo);
         return todo;
       }
     });
 
-    setTodoList(checkedTodoItems);
-    console.log(checkedTodoItems);
+    setTodos(completedTodos);
   };
 
   return (
     <div className="App">
       <header className="App-header">TODO</header>
-      <CreateTask onCreateNewTask={createTaskHandler}></CreateTask>
-      <TaskList
-        tasks={tasksList}
-        setTodoList={setTodoList}
+      <CreateTodo onCreateNewTask={createTodoHandler}></CreateTodo>
+      <TodoList
+        tasks={todos}
+        setTodos={setTodos}
         checkBoxHandler={checkBoxHandler}
-        allTodosListHandler={allTodosListHandler}
+        activeListHandler={activeListHandler}
+        allTodosHandler={allTodosHandler}
         completedListHandler={completedListHandler}
-      ></TaskList>
+      ></TodoList>
       <footer>Drag and drop to reorder list</footer>
     </div>
   );
