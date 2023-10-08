@@ -1,0 +1,27 @@
+@use "/src/components/styles/styles";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans";
+}
+
+.App {
+  text-align: center;
+  // background-color: grey;
+}
+
+.App-header {
+  background-color: styles.$very-dark-desaturated-blue_DarkTheme;
+  min-height: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding-left: 30px;
+}
