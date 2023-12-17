@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+root {
+  --primary-brightblue: hsl(220, 98%, 61%);
+}
+
+$check-background-solid: hsl(280, 87%, 65%);
+
+// ### Light Theme
+
+[data-theme="light"] {
+  --bg-color: white;
+  --bg-list: hsl(0, 0%, 98%);
+  --check-background-gradient: hsl(280, 87%, 65%);
+  --list-container-shadow: hsl(236, 9%, 61%);
+  --list-font-primary-color: hsl(235, 19%, 35%);
+  --list-font-secondary-color: hsl(233, 11%, 70%);
+}
+
+// ### Dark Theme
+
+[data-theme="dark"] {
+  --bg-color: hsl(240, 20%, 12%);
+  --bg-list: hsl(235, 24%, 19%);
+  --check-background-gradient: hsl(280, 87%, 65%);
+  --list-container-shadow: hsla(0, 0%, 0%, 0.507);
+  --list-font-primary-color: hsl(0, 0%, 98%);
+  --list-font-secondary-color: hsl(234, 11%, 52%);
+}
+
+// Light Theme Colors
+
+$bg-color-light: hsl(0, 0%, 98%);
+$bg-list-light: hsl(235, 24%, 19%);
+$text-hover-light: hsl(233, 14%, 35%);
+
+$very-light-grey: hsl(0, 0%, 98%);
+$very-light-greyish-blue: hsl(236, 33%, 92%);
+$light-greyish-blue: hsl(233, 11%, 84%);
+$dark-greyish-blue: hsl(236, 9%, 61%);
+$very-dark-greyish-blue: hsl(235, 19%, 35%);
+
+// Dark Theme Colors
+
+$bg-color-dark: hsl(240, 20%, 12%);
+$bg-list-dark: hsl(235, 24%, 19%);
+$text-hover-dark: hsl(236, 33%, 92%);
+
+$very-dark-blue_DarkTheme: hsl(235, 21%, 11%);
+$very-dark-desaturated-blue_DarkTheme: hsl(235, 24%, 19%);
+$light-greyish-blue_DarkTheme: hsl(234, 39%, 85%);
+$light-greyish-blue_DarkHover: hsl(236, 33%, 92%);
+$dark-greyish-blue_DarkTheme: hsl(234, 11%, 52%);
+$very-dark-greyish-blue_DarkTheme: hsl(233, 14%, 35%);
+$very-dark-greyish-blue2_DarkTheme: hsl(237, 14%, 26%);

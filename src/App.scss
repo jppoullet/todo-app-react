@@ -1,0 +1,81 @@
+@use "/src/components/styles/colors";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans";
+}
+
+.App {
+  height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.theme-switch-icon {
+  cursor: pointer;
+}
+
+.app-header {
+  background: url(./images/bg-desktop-light.jpg);
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  .title-container {
+    // width: clamp(45ch, 50%, 75ch);
+    // width: min(550px, 50%);
+    width: 550px;
+    // padding: 0px 200px;
+  }
+
+  .title-todo {
+    font-size: 2em;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+  }
+
+  .title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .theme-switch-icon {
+    height: 25px;
+  }
+}
+
+.newTodo {
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  font-size: 1em;
+}
+
+@media screen and (max-width: 600px) {
+  .app-header {
+    width: auto;
+    background: url(./images/bg-mobile-light.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .title-container {
+      width: max(300px, 60%);
+    }
+  }
+}
+
+// dark theme
+
+[data-theme="dark"] .app-header {
+  background: url(./images/bg-desktop-dark.jpg);
+}
